@@ -5,9 +5,9 @@
 # IMPORTANT: The container needs priviliged access or access to /dev/bus/usb on the host.
 
 FROM node:11-alpine
-LABEL maintainer="Chris Kacerguis <chris@fuzzyblender.com>"
+LABEL maintainer="Rob Davis <bfe5e925@opayq.com>"
 
-LABEL Description="This image will monitor for Honeywell Sensors message at 345.00 Mhz and send the data to an MQTT server"
+LABEL Description="This is a configurable slightly more generic SRD to MQTT image which is based on the excellent honeywell2mqtt by @chriskacerguis"
 
 #
 # First install software packages needed to compile rtl_433 and to publish MQTT events

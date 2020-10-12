@@ -11,8 +11,8 @@ export LANG=C
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 # Start the listener and enter an endless loop
-echo "Starting RTL..."
-/usr/local/bin/rtl_433 -f 345000000 -F json -R 70 | while read line
+echo "Starting RTL listening on ${LISTEN_FREQUENCY} to decode protocol $3"
+/usr/local/bin/rtl_433 -f ${LISTEN_FREQUENCY} -F json -R ${DECODE_PROTOCOL} | while read line
 do
-  node /app/send.js -p "$line"
+  node ${SEND_JS} -p "$line"
 done
