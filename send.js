@@ -14,21 +14,26 @@ const options = {
 	password: process.env.MQTT_PASSWORD
 }
 
+const packet = JSON.parse(program.packet)
+if(!a["rows"][0]["data"].startsWith('f34dcef9a6e77cd373be69b9d')){
+  return;
+}
+
 const client = mqtt.connect('mqtt://' + process.env.MQTT_HOST,options)
 
 const discoveryPrefix = process.env.MQTT_DISCOVERY_PREFIX
 
 client.on('connect', function () {
-  let packet = JSON.parse(program.packet)
+  console.log(packet);
 
   // See if there is a name map
-  var fName = `Doorbell ${packet.id}`
+  var fName = 'doorbell';
 
   // Set base topic
-  let baseTopic = `${discoveryPrefix}/binary_sensor/${packet.id}`
+  let baseTopic = `${discoveryPrefix}/binary_sensor/1`
 
   // Send the discovery message
-  let configPayload = `{"name": "${fName}", "uniq_id": "${packet.id}", "state_topic": "${baseTopic}/state", "dev_cla": "motion"}`
+  let configPayload = `{"name": "${fName}", "uniq_id": "1", "state_topic": "${baseTopic}/state", "dev_cla": "motion"}`
   client.publish(`${baseTopic}/config`, configPayload, {qos: 1, retain: true})
 
   console.log(`Topic: ${baseTopic}/config`)
