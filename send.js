@@ -15,9 +15,15 @@ const options = {
 }
 
 const packet = JSON.parse(program.packet)
-if(!a["rows"][0]["data"].startsWith('f34dcef9a6e77cd373be69b9d')){
+try {
+  if(!packet["rows"][0]["data"].startsWith('f34dcef9a6e77cd373be69b9d')){
+    return;
+  }
+}catch{
+  console.log('Error when parsing packet', packet);
   return;
 }
+
 
 const client = mqtt.connect('mqtt://' + process.env.MQTT_HOST,options)
 
