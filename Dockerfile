@@ -4,7 +4,7 @@
 
 # IMPORTANT: The container needs priviliged access or access to /dev/bus/usb on the host.
 
-FROM node:11-alpine
+FROM node:20-alpine
 LABEL maintainer="Rob Davis <bfe5e925@opayq.com>"
 
 LABEL Description="This is a configurable slightly more generic SRD to MQTT image which is based on the excellent honeywell2mqtt by @chriskacerguis"

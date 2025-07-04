@@ -1,6 +1,9 @@
 # honeywell2mqtt
-A Docker image for a software defined radio tuned to listen for Honeywell RF security sensors at 345Mhz.  This is based off of Marco Verleun's 
-awesome rtl2mqtt image, but adpated just for Honeywell products and made to work with Home Assistant and MQTT Discovery.
+
+A Docker image for a software defined radio tuned to listen for Honeywell RF security sensors at 345Mhz. This is based off of Marco Verleun's
+awesome rtl2mqtt image, but adapted just for Honeywell products and made to work with Home Assistant and MQTT Discovery.
+
+**Updated for 2024**: This version has been modernized with current Node.js 20, updated dependencies, and improved error handling.
 
 ## Usage
 
@@ -14,12 +17,12 @@ sudo docker run --name honeywell2mqtt -d \
 
 ## Name Mapping (OPTIONAL)
 
-By default you the system will not set a friendlt name, and it will simply default to "MQTT Binary Sensor".  You can mount a map.json file will an ID to name map, and the friendly name will be set to the value.  Here is an example:
+By default you the system will not set a friendlt name, and it will simply default to "MQTT Binary Sensor". You can mount a map.json file will an ID to name map, and the friendly name will be set to the value. Here is an example:
 
 ```json
 {
-    "648705": "Front Door",
-    "648653": "Back Door"
+  "648705": "Front Door",
+  "648653": "Back Door"
 }
 ```
 
@@ -44,7 +47,6 @@ This has been tested and used with the following hardware (you can get it on Ama
 - NooElec NESDR Nano 2+ Tiny Black RTL-SDR USB
 
 However, it should work just fine with any Honeywell RF sensors transmitting on 345Mhz.
-
 
 ## Troubleshooting
 
